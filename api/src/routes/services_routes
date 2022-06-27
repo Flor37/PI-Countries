@@ -17,14 +17,38 @@ const getApiInf = async () => {
             area: e.area,
             population: e.population
         }
-    })
-    
+    })   
+
+    saveInf();
     
     return apiInf;
 }
 
+const saveInf = async () => {
+    const apiCountry = await getApiInf()
+    const countries = apiCountry.map(e => e) 
+    countries.forEach(c => { 
+        Country.findOrCreate({   
+            where: c     
+        })                         
+    }) 
+}
+
+const getDBInf = async () => {
+    return await Country.findAll({
+        include: {
+            model: Activity,
+            attributes: ['name', 'difficulty', 'duration', 'seasson'],
+            through: {
+                attributes: []
+            }
+        }
+    })
+}
+
 module.exports = {
 
-    getApiInf: getApiInf
+    getApiInf: getApiInf,
+    getDBInf: getDBInf
 
 }
