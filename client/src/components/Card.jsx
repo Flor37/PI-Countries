@@ -1,0 +1,16 @@
+import React from 'react'
+import style from './Card.module.css'
+
+function Card({ name, flag, continent }) {
+  return (
+    <div className={style.card}>
+      <div>
+        <img src={flag} alt='img not found' width='200px' height='125px' />
+        <h3>{name}</h3>
+        <h5>{continent}</h5>
+      </div>
+    </div>
+  )
+}
+
+export default Card

@@ -1,0 +1,40 @@
+.card{
+    justify-content: center;
+    width: 20rem;
+    padding: 20px;
+    border-radius: 99px;
+    font-weight: 500;
+    text-align: center;
+    color: #1278bf;
+    box-shadow: 0px 10px 10px -6px black; 
+    border-radius: 5px;
+    backdrop-filter: blur(12px); 
+    position: relative;
+    line-height: 20px;
+    margin-top: 20px;
+}
+
+.bkg{
+    background-image: url('../assets/mapamundi.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.button {
+    color: #f4511e;
+    font-family: Arial black;
+    font-size: 15px;
+    background: #fcc8b8;
+    border: 5px solid #f4511e;
+    border-radius: 6px;
+    padding: 5px;
+    width: 200px;
+    margin-top: 20px;
+    margin-inline: 20px ;
+    font-size: 20px;
+  }
+  
+  .button:hover {
+    color: white;
+    background: #f4511e;
+  }

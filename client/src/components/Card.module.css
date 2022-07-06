@@ -1,0 +1,17 @@
+.card{
+    display: inline-flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #195885;
+    font-size:larger;
+    font-style:oblique;
+    text-decoration:none; 
+    line-height: 5px;
+    box-shadow: 0 10px 10px -6px black;
+    border-radius: 5px;
+    backdrop-filter: blur(12px);
+    margin-inline: 10px;
+    margin-top: 10px;
+}

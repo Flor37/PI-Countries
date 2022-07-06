@@ -1,0 +1,69 @@
+.bkg {
+    width: 100vw;
+    height: 120vh;  
+    background-image: url('../assets/actividades.jpg');
+    background-size: 100% 100%;
+    position: absolute;
+  }  
+  
+  .btn {
+    color: #1278bf;
+    font-family: Arial Black;
+    font-size: 50px;
+    background: #adddff;
+    border: 5px solid #1278bf;
+    border-radius: 10px;
+    padding: 16px 32px;
+    width: 500px;
+    margin-bottom: auto;
+  }
+  
+  .btn:hover {
+    color: white;
+  background-color: #1278bf;
+  }
+  
+  .button {
+    color: #f4511e;
+    font-family: Arial black;
+    font-size: 15px;
+    background: #fcc8b8;
+    border: 5px solid #f4511e;
+    border-radius: 6px;
+    padding: 5px;
+    width: 200px;
+    margin-top: 50px;
+    margin-inline: 20px ;
+    font-size: 20px;
+  }
+  
+  .button:hover {
+    color: white;
+    background: #f4511e;
+  }
+  
+  .select {
+    background-color: #51b3f9;
+    font-family: Arial black;
+    border: none;
+    box-shadow: #0073c4;
+    color: #024270;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-inline: 10px;
+    margin-top: 20px;    
+  }
+
+  .tex {
+    color: #024270;
+    font-family: Arial black;
+    font-size: 20px;
+  }
+
+  .tit {
+    font-family: Arial Black;
+    font-weight: bold;
+    font-size: 50px;
+    text-shadow: 0px 1px 9px #51b3f9, 0 2px;
+    color: #024270;
+  }

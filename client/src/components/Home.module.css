@@ -1,0 +1,53 @@
+.bkg {
+  width: 100vw;
+  height: 150vh;  
+  background-image: url('../assets/banderas.jpg');
+  background-size: 100% 100%;
+}  
+
+.btn {
+  color: #1278bf;
+  font-family: Arial Black;
+  font-size: 50px;
+  background: #adddff;
+  border: 5px solid #1278bf;
+  border-radius: 10px;
+  padding: 16px 32px;
+  width: 500px;
+  margin-bottom: auto;
+}
+
+.btn:hover {
+  color: white;
+background-color: #1278bf;
+}
+
+.button {
+  color: #f4511e;
+  font-family: Arial black;
+  font-size: 20px;
+  background: #fcc8b8;
+  border: 5px solid #f4511e;
+  border-radius: 6px;
+  padding: 15px;
+  width: 200px;
+  margin-top: 50px;
+  margin-inline: 20px ;
+}
+
+.button:hover {
+  color: white;
+  background: #f4511e;
+}
+
+.select {
+  background-color: #1278bf;
+  border: none;
+  box-shadow: #0073c4;
+  color: white;
+  font-size: 22px;
+  border-radius: 5px;
+  margin-inline: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

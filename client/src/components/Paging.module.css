@@ -1,0 +1,18 @@
+.button {
+    font-size: 15px;
+    background: #fcc8b8;
+    border: 1px solid #f4511e;
+    border-radius: 1px;
+    /* padding: 16px 32px; */
+    /* width: 200px;   */
+  }
+  
+  .button:hover {
+    color: white;
+    background: #f4511e;
+  }
+
+  .button:any-link {
+    color: white;
+    background: #fe6b3e;
+  }
