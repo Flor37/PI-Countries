@@ -16,7 +16,6 @@ import style from './Home.module.css'
 
 function Home() {
 
-
     const dispatch = useDispatch()
     const allCountries = useSelector((state) => state.countries)
     const activities = useSelector((state) => state.activities)
@@ -42,6 +41,9 @@ function Home() {
         e.preventDefault();
         dispatch(getCountries());
         document.getElementById('ftCont').selectedIndex = 0
+        document.getElementById('ftActivity').selectedIndex = 0
+        document.getElementById('selectByName').selectedIndex = 0
+        document.getElementById('selectByPop').selectedIndex = 0
         setCurrentPage(1)
     }
 
@@ -52,7 +54,6 @@ function Home() {
 
     function handleOrderByName(e) {
         e.preventDefault();
-        //dispatch(orderByName(document.getElementById('selectOrder').value));
         dispatch(orderByName(e.target.value));
         setCurrentPage(1)
         setSort(`Sort ${e.target.value}`)
@@ -87,18 +88,18 @@ function Home() {
                     <option value='Oceania'>Oceania</option>
                     <option value='South America'>South America</option>
                 </select>
-                <select className={style.select} id='selectOrderByName' onChange={e => handleOrderByName(e)}>
+                <select className={style.select} id='selectByName' onChange={e => handleOrderByName(e)}>
                     <option value=''>Order by name</option>
                     <option value='asc'>Ascendant</option>
                     <option value='desc'>Descendant</option>
                 </select>
-                <select className={style.select} id='selectOrderByPop' onChange={e => handleOrderByPop(e)}>
+                <select className={style.select} id='selectByPop' onChange={e => handleOrderByPop(e)}>
                     <option value=''>Order by population</option>
                     <option value='asc'>Ascendant</option>
                     <option value='desc'>Descendant</option>
                 </select>
                 <select className={style.select} id='ftActivity' onChange={e => handleFilterByActivities(e)}>
-                <option value='All'>All activities</option>   
+                <option value='All'>By activities</option>   
                 {
                     activities?.map((a)=>
                     {
@@ -122,6 +123,7 @@ function Home() {
                                         flag={c.flag}
                                         name={c.name}
                                         continent={c.continent}
+                                        borders={c.borders}
                                         id={c.id}
                                     />
                                 </Link>

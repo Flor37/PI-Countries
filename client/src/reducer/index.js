@@ -3,8 +3,9 @@ const inicialState = {
     copyCountries: [],
     detail: [],
     activities:[],
-    countriesByConinent:[],
-    copyActivities:[]
+    copySelectCountry:'',
+    copyActivities:'',
+    copyOrder:''
 
 }
 
@@ -27,22 +28,35 @@ function rootReducer(state = inicialState, action) {
                 copyCountries: action.payload
             }
         case 'FILTER_BY_CONTINENT':
-           const selectActivities =  state.copyActivities
+            state.copySelectCountry = action.payload;
             const allCountries = state.copyCountries
-
-            const continentsFiltered = action.payload === 'All' ?
-                allCountries : selectActivities.length > 0 ?  selectActivities.filter(c => c.continent === action.payload)
-                : allCountries.filter(c => c.continent === action.payload)
+            const selectActivities  = state.copyActivities
+            let act = []
+            let continentsFiltered; 
+            if( selectActivities != '' && selectActivities != 'All' ) { 
+                allCountries.forEach((f,index)=> {
+                    f.actvities.forEach( i => {                 
+                         if(i.name  === selectActivities)
+                         act.push(allCountries[index]);                
+                    })                     
+               })
                
-                  
-                
+            continentsFiltered = action.payload === 'All' ?
+            act :  act.filter(c => c.continent === action.payload)
                
-                state.countriesByConinent = continentsFiltered;
+            }else{
+                continentsFiltered = action.payload === 'All' ?
+              allCountries :  allCountries.filter(c => c.continent === action.payload)
+            
+            }   
+               
+                //state.countriesByConinent = continentsFiltered;
             return {
                 ...state,
                 countries: continentsFiltered
             }
         case 'ORDER_BY_NAME':
+            state.copyOrder = action.payload;
             let countriesOrdered = action.payload === 'asc' ?
                 state.countries.sort(function (a, b) {
                     if (a.name > b.name) return 1;
@@ -89,27 +103,31 @@ function rootReducer(state = inicialState, action) {
                 detail: action.payload
             }
         case 'FILTER_BY_ACTIVITY':
-           const activity = action.payload          
-           let countriesActivities;
-           switch(activity){
-               case 'All':
-                countriesActivities = state.copyCountries; 
-                break;
-                default:
-                    countriesActivities = [];
-                    const countries = state.countriesByConinent.length > 0 ? 
-                    state.countriesByConinent : 
-                    state.copyCountries;   
-                    countries.forEach((f,index)=> {
-                        f.actvities.forEach( i => {                 
-                             if(i.name  === activity)
-                                 countriesActivities.push(countries[index]);                
-                        })                     
-                   })
-                    break;
-                
-           }      
-          state.copyActivities = countriesActivities;
+           const activity = action.payload;   
+           state.copyActivities = action.payload;
+           let dataCountry = state.copyCountries;
+           let countriesActivities = [];
+           if(state.copySelectCountry != '' &&  state.copySelectCountry != 'All' ){
+            dataCountry =  dataCountry.filter(c => c.continent === state.copySelectCountry);              
+               
+            dataCountry =  activity === 'All' ? dataCountry
+             : dataCountry.forEach((f,index)=> {
+                f.actvities.forEach( i => {                 
+                     if(i.name  === activity)
+                         countriesActivities.push(dataCountry[index]);                
+                })                     
+           })
+
+           }else{
+            dataCountry.forEach((f,index)=> {
+                f.actvities.forEach( i => {                 
+                     if(i.name  === activity)
+                         countriesActivities.push(dataCountry[index]);                
+                })                     
+           })
+         }
+          state.copyOrder == 'asc' ? countriesActivities.sort((a,b)=> a.name.localeCompare(b.name)):countriesActivities.sort((a,b)=> b.name.localeCompare(a.name)) ;
+
        
         return{
            ...state,

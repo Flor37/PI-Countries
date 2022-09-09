@@ -13,18 +13,19 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/countries', async (req, res) => {  
+router.get('/countries', async (req, res) => {   
     const name = req.query.name    
     const theCountries = await services.getDBInf()
     const allCountries = await theCountries.map(c => {
-        return {
+        return { 
             id:c.id,
-            flag: c.flag,
-            name: c.name,
+            flag: c.flag,   
+            name: c.name, 
             continent: c.continent,
             population: c.population,
-            actvities: c.activities
-        }
+            actvities: c.activities,   
+            borders: c.borders  
+        }  
     })
     if(name){
         let countryName = await allCountries.filter(c => c.name.toLowerCase().includes(name.toLowerCase()))

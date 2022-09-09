@@ -40,21 +40,18 @@ function ActivityCreate() {
         }))
     }
 
-    function handleSelectDiff(e) {
-        if (e.target.checked) {
+    function handleSelectDiff(e) {      
             setInput({
                 ...input,
                 difficulty: e.target.value
-            })
-        }
+            })        
     }
-    function handleSelectSeason(e) {
-        if (e.target.checked) {
+
+    function handleSelectSeason(e) {       
             setInput({
                 ...input,
                 seasson: e.target.value
-            })
-        }
+            })        
     }
 
     function handleSelectCountry(e) {
@@ -66,6 +63,7 @@ function ActivityCreate() {
 
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(postActivity(input))
         dispatch(postActivity(input))
         alert('Activity created succesfully')
         setInput({
@@ -92,18 +90,22 @@ function ActivityCreate() {
     return (
         <div className={style.bkg}>
            
-            <h1 className={style.tit}>Create a new tourist activity:</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
+            <div>
+                 <Link to='/home'><button className={style.button}>Back</button></Link>
+                    <button className={style.button} type='submit'>Create activity</button>
+                </div>
+            <h1 className={style.tit}>Create a new tourist activity:</h1>
                 <div>
-                    <label className={style.tex}>Name:</label>
+                    <label className={style.tex}>Name: </label>
                     <input type='text' value={input.name} name='name' onChange={handleChange} />
-                    {errors.name && (<p>{errors.name}</p>)}
+                    {errors.name && (<p className={style.err}>{errors.name}</p>)}
                 </div>
                 <div>
-                    <label className={style.tex}>Duration:</label>
+                    <label className={style.tex}>Duration: </label>
                     <input type='text' value={input.duration} name='duration' onChange={handleChange} />
                     <label className={style.tex}>min</label>
-                    {errors.duration && (<p>{errors.duration}</p>)}
+                    {errors.duration && (<p className={style.err}>{errors.duration}</p>)}
                 </div>
                 <div>
                     <select className={style.select} id='difficulty' name='difficulty' onChange={(e) => handleSelectDiff(e)}>
@@ -128,28 +130,19 @@ function ActivityCreate() {
                 {
                 input.country.map(c =>
                     <div>
-                        <p>{c}</p>
-                        <button onClick={() => handleDelete(c)}>x</button>
+                        <p className={style.card}>{c}</p>
+                        <button className={style.lbutton} onClick={() => handleDelete(c)}>x</button>
                     </div>)
             }
                 <div>
-                    <select className={style.select} id='contry' name='country' onChange={(e) => handleSelectCountry(e)}>
+                    <select className={style.select} id='country' name='country' onChange={(e) => handleSelectCountry(e)}>
                         <option value=''>Select the countries</option>
                         {
                             countries.map((c) => (<option value={c.name}>{c.name}</option>))
                         }
                     </select>
                 </div>
-
-                <div>
-                 <Link to='/home'><button className={style.button}>Back</button></Link>
-                    <button className={style.button} type='submit'>Create activity</button>
-                </div>
-
-            </form >
-
-            
-
+            </form >     
         </div >
     )
 }

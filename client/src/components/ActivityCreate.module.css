@@ -67,3 +67,55 @@
     text-shadow: 0px 1px 9px #51b3f9, 0 2px;
     color: #024270;
   }
+
+  .card{
+    display: inline-flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #195885;
+    font-size:larger;
+    font-style:oblique;
+    text-decoration:none; 
+    line-height: 5px;
+    box-shadow: 0 10px 10px -6px black;
+    border-radius: 5px;
+    backdrop-filter: blur(12px);
+    margin-inline: 10px;
+    margin-top: 10px;
+  }
+  
+  .lbutton{
+    display: solid 2px transparent;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    width: 1.5rem;
+    padding: 0;
+    height: 1.5rem;
+    align-items: center;
+    background-color: transparent;
+    transition: background-color 1.25s;
+    cursor: pointer;
+    color: white;
+    margin-left: 7.5rem;
+}
+
+.lbutton:hover{
+    background-color: crimson;
+}
+
+.card, .lbutton {
+  display: inline-flex;
+  flex-direction: row;
+  margin-inline: auto;
+  margin-top: 15px;
+}
+
+.err{
+  color: crimson;
+  font-family: Arial black;
+  font-size: 15px;
+  text-shadow: 0px 1px 9px #1278bf, 0 2px;
+}

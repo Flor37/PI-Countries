@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
     population:{
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    borders:{
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
 };

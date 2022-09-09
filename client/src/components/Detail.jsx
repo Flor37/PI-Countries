@@ -6,7 +6,6 @@ import {useEffect} from 'react';
 import style from './Detail.module.css'
 
 function Detail(props) {
-    console.log(props)
     const dispatch = useDispatch()
 
 useEffect(() => {

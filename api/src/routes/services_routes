@@ -3,6 +3,7 @@ const { Country, Activity } = require('../db')
 
 // *** Función para obtener la información de la api externa  
 const getApiInf = async () => {
+    
     const countriesApiURL = await axios.get('https://restcountries.com/v3/all');
 
     const apiInf = await countriesApiURL.data.map((e) => {
@@ -12,13 +13,14 @@ const getApiInf = async () => {
             name: e.name.official,
             flag: e.flags[0],
             continent: e.continents[0],
-            capital: e.capital == undefined ? '0' : e.capital[0],
-            subregion: e.subregion == undefined ? '': e.subregion,
+            capital: e.capital == undefined ? 'No capital' : e.capital[0],
+            subregion: e.subregion == undefined ? 'No subregion': e.subregion,
             area: e.area,
-            population: e.population
+            population: e.population,
+            borders: e.borders == undefined ? '' : e.borders.join()
         }
     })   
-
+    
     saveInf();
     
     return apiInf;
@@ -36,7 +38,7 @@ const saveInf = async () => {
 
 const getDBInf = async () => {
     return await Country.findAll({
-        include: {
+        include: { 
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'seasson'],
             through: {

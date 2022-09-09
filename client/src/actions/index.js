@@ -59,11 +59,6 @@ export function postActivity(payload){
     }
 }
 
-// export function getActivities(){
-//     return{
-
-//     }
-// }
 
 export function getDetailCountries(id){
     return async function(dispatch){
